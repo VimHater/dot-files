@@ -1,7 +1,7 @@
 
 [font]
 normal = ["ZedMono Nerd Font Mono"]
-size = 14
+size = 13
 
 [font.features]
 "ZedMono Nerd Font Mono" = ["-calt"]
