@@ -1,7 +1,7 @@
 #!/bin/env bash
 set -xe
-mkdir -p "$HOME/.config/neovide"
-cp -r ./neovide/. "$HOME/.config/neovide/"
-cp ./wezterm.lua "$HOME/.wezterm.lua"
-mkdir -p "$HOME/.config/niri"
-cp -r ./niri/. "$HOME/.config/niri/"
+DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+mkdir -p "$HOME/.config"
+ln -sfn "$DOTFILES/neovide" "$HOME/.config/neovide"
+ln -sfn "$DOTFILES/wezterm.lua" "$HOME/.wezterm.lua"
+ln -sfn "$DOTFILES/niri" "$HOME/.config/niri"
