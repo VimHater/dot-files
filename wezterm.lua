@@ -11,29 +11,22 @@ local config = wezterm.config_builder()
 config.color_scheme = "ayu"
 config.enable_wayland = true
 config.font = wezterm.font("ZedMono Nerd Font")
-config.font_size = 13
+config.font_size = 14.3
 config.harfbuzz_features = { "calt=0" }
-config.enable_kitty_graphics = true
-config.quit_when_all_windows_are_closed = false
--- config.enable_kitty_keyboard = true
-config.default_prog = { "zsh" }
 -- config.initial_cols = 84
-config.initial_rows = 90
-config.window_background_opacity = 1
-config.use_fancy_tab_bar = true
+--config.window_background_image = "~/Pictures/wallpapers/1311862.jpeg"
+config.window_background_opacity = 0.4
+config.use_fancy_tab_bar = false
 config.adjust_window_size_when_changing_font_size = false
-config.line_height = 1.1
+config.line_height = 1
 config.enable_tab_bar = false
 config.enable_scroll_bar = false
 config.use_ime = false
-config.max_fps = 60
+config.max_fps = 120
 config.animation_fps = 60
 config.front_end = "OpenGL"
--- config.front_end = "WebGpu"
--- config.front_end = "Software"
-config.window_close_confirmation = 'NeverPrompt'
 config.window_padding = {
-    left = 1,
+    left = 0,
     right = 0,
     top = 0,
     bottom = 0,
@@ -79,15 +72,6 @@ config.keys = {
     --     action = wezterm.action.ShowTabNavigator,
     -- },
     {
-        key = "|",
-        mods = "CTRL|SHIFT",
-        action = wezterm.action.SplitPane({
-            direction = "Right",
-            command = { args = { "zsh" } },
-            size = { Percent = 50 },
-        }),
-    },
-    {
         key = "o",
         mods = "CTRL|SHIFT",
         action = wezterm.action_callback(function(window, pane)
@@ -102,7 +86,7 @@ config.keys = {
     },
     {
         key = "t",
-        mods = "CTRL|SHIFT",
+        mods = "CTRL",
         action = wezterm.action_callback(function(window, pane)
             local cwd = pane:get_current_working_dir()
             local dir = cwd and cwd.file_path or wezterm.home_dir
@@ -111,28 +95,14 @@ config.keys = {
     },
     {
         key = "Enter",
-        mods = "CTRL|SHIFT",
+        mods = "ALT",
         action = wezterm.action_callback(function(window, pane)
             local cwd = pane:get_current_working_dir()
             local dir = cwd and cwd.file_path or wezterm.home_dir
             window:perform_action(wezterm.action.SpawnCommandInNewWindow({ cwd = dir }), pane)
         end),
     },
-    {
-        key = "w",
-        mods = "CTRL|SHIFT",
-        action = wezterm.action.CloseCurrentPane({ confirm = true }),
-    },
-    {
-        key = "h",
-        mods = "CTRL|SHIFT",
-        action = wezterm.action({ ActivatePaneDirection = "Next" })
-    },
-    {
-        key = "l",
-        mods = "CTRL|SHIFT",
-        action = wezterm.action({ ActivatePaneDirection = "Prev" })
-    },
+
     {
         key = "q",
         mods = "CTRL|SHIFT",
